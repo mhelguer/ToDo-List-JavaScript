@@ -1,0 +1,157 @@
+/* remove browser's default styling */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: linear-gradient(120deg, #ccb055, #fda085);
+    color: white;
+    font-family: "Poppins", sans-serif;
+    min-height: 100vh;
+}
+
+header{
+    /* Miguel's Todo List is the header bc its in <header></header> in the index.html that links to this css file */
+    font-size: 1.5rem;
+}
+
+header, form{    
+    min-height:20vh; /* Miguel's ToDo List (header) is 20vh above the form */
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+
+form input, 
+form button{
+    padding: 0.5rem;
+    font-size: 2rem;
+    border: none;
+    background: white;
+}
+
+/* make white padding of the + button even with the form padding */
+form button{
+    width: 53px;
+    height: 53px;
+    color: #d88771;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* when cursor is hovering over the button: */
+form button:hover{
+    color: white;
+    background: #d88771;
+}
+
+/* this is how to get a div from html file using its class */
+.todo-container{
+    display: flex;
+    justify-content: center;    
+}
+
+.todo-list{
+    min-width: 30%;
+    list-style: none;
+}
+
+.todo{
+    margin:0.5rem;
+    background:white;
+    color:black; /* color of the text (hey) */
+    font-size:1.5rem;
+    display:flex;   /* makes the items right next to each other */
+    justify-content: space-between; /* gives space between each element */
+    align-items: center;
+    transition: all 0.5s ease; /* when item is altered, the change takes 0.5 seconds */
+}
+
+.todo li{
+    flex: 1; /* pushes check buttons from middle to end right next to trash buttons */
+}
+
+.trash-btn, .completed-btn{
+    background: #ff6f47;
+    color: white;
+    border:none;
+    padding: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* override check mark button (completed-btn) color */
+.completed-btn{
+    background: rgb(73,204,73);
+}
+
+/* move items away from left edge after appending them to list */
+.todo-item{
+    padding: 0rem 0.5rem;  
+}
+
+/* make it so you cannot click on the check/trash symbols */
+.fa-trash, .fa-check{
+    pointer-events: none;
+}
+
+/*  in app.js we set classList of the completed item (check mark clicked)
+    to 'completed', then the item is altered:
+*/
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* when item is deleted (trash button clicked), this will happen: */
+/* in app.js after item's trash is clicked, it adds 'fall' to classList */
+.fall{
+    transform: translateY(8rem) rotateZ(20deg);
+    opacity: 0;
+}
+
+
+/*  cannot style <select> (the menu on the right of input form), so 
+    remove all its styles first and style the div it's in */
+select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border: none;
+}
+
+/* the div around the select in the html file */
+.select{
+    margin: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+select{
+    color: #ff6f47;
+    width: 10rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+/* adds downward arror to select menu */
+.select::after{
+    content: "\25BC";
+    position: absolute;
+    background: #ff6f47;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+/* add transition to select menu */
+.select:hober::after{
+    background: white;
+    color: #ff6f47;
+}
